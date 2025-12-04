@@ -33,7 +33,7 @@ const BookCatalog = () => {
                 const isRecent = (Date.now() - parseInt(timestamp)) < 300000; //5 minute
                 if (isRecent) {
                     try {
-                        const response = await fetch('${API_URL}/api/check-payment-status/${sessionId}');
+                        const response = await fetch(`${API_URL}/api/check-payment-status/${sessionId}`);
                         if (response.ok) {
                             const data = await response.json();
                             if (data.paymentStatus === 'paid') {
@@ -61,7 +61,7 @@ const BookCatalog = () => {
 
     const fetchProducts = async () => {
 try{
-    const response = await axios.get('${API_URL}/api/products');
+    const response = await axios.get(`${API_URL}/api/products`);
         console.log('Raspuns API:', response);
         console.log('Date raspuns:', response.data);
     if (response.data.success) {

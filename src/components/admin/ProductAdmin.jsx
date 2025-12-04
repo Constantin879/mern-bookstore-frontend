@@ -162,7 +162,7 @@ const handleSaveProduct = async (e) => {
         const token = localStorage.getItem('adminToken');
         const url = editingProduct
             ? `${API_URL}/api/admin/products/${editingProduct.id}`
-            : '${API_URL}/api/admin/products';
+            : `${API_URL}/api/admin/products`;
 
         const productData = {
             ...formData,

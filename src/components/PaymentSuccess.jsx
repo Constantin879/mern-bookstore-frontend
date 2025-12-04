@@ -11,7 +11,7 @@ const PaymentSuccess = () => {
         //Golește coșul când pagina se încarcă (după paltă reușită)
         const clearCart = async () => {
             try {
-                await fetch('${API_URL}/api/clear-cart', {
+                await fetch(`${API_URL}/api/clear-cart`, {
                     method: 'POST'
                 });
                 console.log('✅ Coș golit după plată reușită');

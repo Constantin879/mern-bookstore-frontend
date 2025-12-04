@@ -22,7 +22,7 @@ useEffect(() => {
 
 const fetchCart = async () => {
     try {
-        const response = await axios.get('${API_URL}/api/cart');
+        const response = await axios.get(`${API_URL}/api/cart`);
         if (response.data.success) {
             setCart (response.data.cart);
         }
@@ -50,7 +50,7 @@ const handleCheckoutClick = async () => {
     try {
         setProcessingPayment(true);
 
-        const response = await fetch('${API_URL}/api/create-checkout-session', {
+        const response = await fetch(`${API_URL}/api/create-checkout-session`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
