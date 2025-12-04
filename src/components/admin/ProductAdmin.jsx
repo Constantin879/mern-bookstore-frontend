@@ -2,6 +2,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './ProductAdmin.css';
+import { API_URL } from '../../config';
 
 const ProductAdmin = () => {
 const [products, setProducts] = useState([]);
@@ -50,7 +51,7 @@ const loadProducts = async (filtersObj = filters) => {
         if (filtersObj.search) params.append('search', filtersObj.search);
         if (filtersObj.status !== 'all') params.append('status', filtersObj.status);
 
-        const response = await fetch(`http://localhost:3000/api/admin/products?${params.toString()}`, {
+        const response = await fetch(`${API_URL}/api/admin/products?${params.toString()}`, {
             headers: { 'Authorization': `Bearer ${token}` }
         });
 
@@ -160,8 +161,8 @@ const handleSaveProduct = async (e) => {
     try {
         const token = localStorage.getItem('adminToken');
         const url = editingProduct
-            ? `http://localhost:3000/api/admin/products/${editingProduct.id}`
-            : 'http://localhost:3000/api/admin/products';
+            ? `${API_URL}/api/admin/products/${editingProduct.id}`
+            : '${API_URL}/api/admin/products';
 
         const productData = {
             ...formData,
@@ -207,7 +208,7 @@ const handleDelete = async (productId) => {
 
     try {
         const token = localStorage.getItem('adminToken');
-        const response = await fetch(`http://localhost:3000/api/admin/products/${productId}?permanent=true`, {
+        const response = await fetch(`${API_URL}/api/admin/products/${productId}?permanent=true`, {
             method: 'DELETE',
             headers: { 'Authorization': `Bearer ${token}` }
         });
@@ -228,7 +229,7 @@ const handleDelete = async (productId) => {
 const handleToggleStatus = async (productId, currentStatus) => {
     try {
         const token = localStorage.getItem('adminToken');
-        const response = await fetch(`http://localhost:3000/api/admin/products/${productId}`, {
+        const response = await fetch(`${API_URL}/api/admin/products/${productId}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

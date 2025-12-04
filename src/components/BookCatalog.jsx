@@ -5,7 +5,7 @@ import SearchFilterSort from './SearchFilterSort'; //adaugata
 import CardSidebar from './CardSidebar';
 import './BookCatalog.css';
 import { FaShoppingCart, FaBook } from 'react-icons/fa'; 
-import { API_URL } from '../../config';
+import { API_URL } from '../config';
 
 
 const BookCatalog = () => {
