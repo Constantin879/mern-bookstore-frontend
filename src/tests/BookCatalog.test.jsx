@@ -4,6 +4,8 @@ import BookCatalog from '../src/components/BookCatalog'
 import { BrowserRouter } from 'react-router-dom'
 import axios from 'axios'
 
+
+
 // Simulare axios
 vi.mock('axios')
 

@@ -4,6 +4,8 @@ import CardSidebar from '../src/components/CardSidebar'
 import { BrowserRouter } from 'react-router-dom'
 import axios from 'axios'
 
+
+
 // Simulare axios
 vi.mock('axios')
 
