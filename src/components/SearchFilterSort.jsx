@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './SearchFilterSort.css';
-import { set } from "lodash";
+//import { set } from "lodash";
 
 
 const SearchFilterSort = ({
