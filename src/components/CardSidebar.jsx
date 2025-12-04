@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './CardSidebar.css';
+import { API_URL } from '../../config';
+
 
 const CardSidebar = ({ isOpen, onClose }) => {
     const [cart, setCart] = useState({
@@ -20,7 +22,7 @@ useEffect(() => {
 
 const fetchCart = async () => {
     try {
-        const response = await axios.get('http://localhost:3000/api/cart');
+        const response = await axios.get('${API_URL}/api/cart');
         if (response.data.success) {
             setCart (response.data.cart);
         }
@@ -33,7 +35,7 @@ const removeFromCart = async (productId) => {
     try {
         setLoading(true);
         const response = await
-        axios.delete(`http://localhost:3000/api/cart/${productId}`);
+        axios.delete(`${API_URL}/api/cart/${productId}`);
         if (response.data.success) {
             setCart (response.data.cart);
         } 
@@ -48,7 +50,7 @@ const handleCheckoutClick = async () => {
     try {
         setProcessingPayment(true);
 
-        const response = await fetch('http://localhost:3000/api/create-checkout-session', {
+        const response = await fetch('${API_URL}/api/create-checkout-session', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

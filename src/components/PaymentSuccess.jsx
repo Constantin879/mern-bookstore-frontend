@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import './PaymentSuccess.css';
+import { API_URL } from '../../config';
+
 
 const PaymentSuccess = () => {
     const [searchParams] = useSearchParams();
@@ -9,7 +11,7 @@ const PaymentSuccess = () => {
         //Golește coșul când pagina se încarcă (după paltă reușită)
         const clearCart = async () => {
             try {
-                await fetch('http://localhost:3000/api/clear-cart', {
+                await fetch('${API_URL}/api/clear-cart', {
                     method: 'POST'
                 });
                 console.log('✅ Coș golit după plată reușită');

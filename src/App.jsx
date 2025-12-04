@@ -5,6 +5,7 @@ import BookCatalog from './components/BookCatalog';
 import PaymentSuccess from './components/PaymentSuccess';
 import AdminLogin from './components/admin/AdminLogin';
 import ProductAdministration from './components/admin/ProductAdmin';
+import { API_URL } from '../config';
 
 // import '.App.css';
 

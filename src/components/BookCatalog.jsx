@@ -1,11 +1,11 @@
 
-
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import SearchFilterSort from './SearchFilterSort'; //adaugata
 import CardSidebar from './CardSidebar';
 import './BookCatalog.css';
 import { FaShoppingCart, FaBook } from 'react-icons/fa'; 
+import { API_URL } from '../../config';
 
 
 const BookCatalog = () => {
@@ -33,11 +33,11 @@ const BookCatalog = () => {
                 const isRecent = (Date.now() - parseInt(timestamp)) < 300000; //5 minute
                 if (isRecent) {
                     try {
-                        const response = await fetch('http://localhost:3000/api/check-payment-status/${sessionId}');
+                        const response = await fetch('${API_URL}/api/check-payment-status/${sessionId}');
                         if (response.ok) {
                             const data = await response.json();
                             if (data.paymentStatus === 'paid') {
-                                await fetch('http://localhost:3000/api/clear-cart', {
+                                await fetch('${API_URL}/api/clear-cart', {
                                     method: 'POST' });
                                         fetchCartTotal();
                                         localStorage.removeItem('lastCheckoutSession');
@@ -61,7 +61,7 @@ const BookCatalog = () => {
 
     const fetchProducts = async () => {
 try{
-    const response = await axios.get('http://localhost:3000/api/products');
+    const response = await axios.get('${API_URL}/api/products');
         console.log('Raspuns API:', response);
         console.log('Date raspuns:', response.data);
     if (response.data.success) {
@@ -79,7 +79,7 @@ try{
 
     const fetchCartTotal = async () => {
         try {
-            const response = await axios.get('http://localhost:3000/api/cart');
+            const response = await axios.get('${API_URL}/api/cart');
             if (response.data.success) {
                 setCartTotal(response.data.cart.totalItems);
             }
@@ -90,7 +90,7 @@ try{
 
     const addToCart = async (productId) => {
         try {
-            const response = await axios.post('http://localhost:3000/api/cart', 
+            const response = await axios.post('${API_URL}/api/cart', 
                 {
                     productId,
                     quantity: 1
